@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل العملات الرقمية - خالد دراغة</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+    <header>
+        <h1>مؤشر تحليل العملات الرقمية</h1>
+        <p>© جميع الحقوق محفوظة للسيد خالد دراغة</p>
+    </header>
+
+    <main>
+        <div class="search-filters">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن عملة...">
+            </div>
+            <div class="filters">
+                <div class="filter-group">
+                    <label>السعر</label>
+                    <select id="priceOperator">
+                        <option value="eq">يساوي</option>
+                        <option value="gt">أكبر من</option>
+                        <option value="lt">أصغر من</option>
+                        <option value="gte">أكبر من أو يساوي</option>
+                        <option value="lte">أصغر من أو يساوي</option>
+                    </select>
+                    <input type="number" id="priceValue" placeholder="السعر" step="0.00000001">
+                </div>
+                <div class="filter-group">
+                    <label>حجم التداول</label>
+                    <select id="volumeOperator">
+                        <option value="eq">يساوي</option>
+                        <option value="gt">أكبر من</option>
+                        <option value="lt">أصغر من</option>
+                        <option value="gte">أكبر من أو يساوي</option>
+                        <option value="lte">أصغر من أو يساوي</option>
+                    </select>
+                    <input type="number" id="volumeValue" placeholder="حجم التداول">
+                </div>
+                <div class="filter-group">
+                    <label>عائلة العملة</label>
+                    <select id="quoteAsset">
+                        <option value="all">الكل</option>
+                        <option value="USDT">USDT</option>
+                        <option value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="BNB">BNB</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="symbol-selector">
+            <div class="symbols-list" id="symbolsList"></div>
+            <div class="selected-symbol">
+                <select id="timeframe">
+                    <option value="1m">1 دقيقة</option>
+                    <option value="5m">5 دقائق</option>
+                    <option value="15m">15 دقيقة</option>
+                    <option value="1h">ساعة</option>
+                </select>
+                <input type="number" id="tailRatio" value="100" min="1" max="1000" placeholder="نسبة الذيل المطلوبة">
+            </div>
+        </div>
+
+        <div id="chart"></div>
+
+        <div class="alerts">
+            <h2>التنبيهات</h2>
+            <div id="alertsList"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="stats">
+            <div>عدد التنبيهات: <span id="alertCount">0</span></div>
+            <div>آخر تحديث: <span id="lastUpdate">-</span></div>
+            <div>العملات المتوفرة: <span id="symbolCount">0</span></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
